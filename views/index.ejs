@@ -1,0 +1,43 @@
+<!-- insert the header file here -->
+
+<%- include('header.ejs') %>
+
+
+<div class="container card-container">
+        <div class="card">
+            <div class="card-header text-center">
+              <%= listTitle %>
+            </div>
+            <div class="input-form">
+              <form action="/" method="post" class="align-items-center">
+                
+                  <div class="input-group">
+                    <input name="pTask" type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Create a new task">
+                    <button value="<%= listTitle %>" name="list" type="submit" class="btn btn-primary">Add Item</button>
+                  </div>
+              </form>
+            </div>
+
+            <% todo.forEach((item) => { %>
+              <form action="/delete" method="post" class="align-items-center itemlist">
+                <div class="item">
+                    <input class="round" type="checkbox" name="checkbox" onChange="this.form.submit()" value="<%= item._id %>">
+                    <p id="todo" class="todo"> <%= item.name %> </p>
+                    <input type="hidden" name="listName" value="<%= listTitle %>" ></input>
+                </div>
+                
+              </form>
+            <% }) %>
+              
+            
+
+            
+          </div>
+
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="app/app.js"></script>
+<%- include('footer.ejs') %>
